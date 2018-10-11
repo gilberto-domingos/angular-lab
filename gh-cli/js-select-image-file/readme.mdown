@@ -1,0 +1,23 @@
+
+
+####Usage
+
+Basic Configuration:
+
+    $('.image-upload').imgPreview();
+
+Advanced configuration:
+
+    // You may pass any or all of the below options
+    $('.image-upload').imgPreview({
+        thumbnail_size:60,
+        thumbnail_bg_color:"#ddd",
+        thumbnail_border:"5px solid #fff",
+        thumbnail_shadow:"0 0 4px rgba(0, 0, 0, 0.5)",
+        label_text:"Select an Image File",
+        warning_message:"Not an image file.",
+        warning_text_color:"#f00"
+    });
+
+####
+

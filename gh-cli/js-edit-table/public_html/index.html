@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html manifest="offlinedatabasehair.manifest">
+<head>
+<meta charset="UTF-8">
+<title>RENOVE</title>
+<script type="text/javascript" src="offlinedatabasehairJS.js" ></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- comportamento tabela javascript -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="tabela.js" ></script>
+<!-- end comportamento tabela javascript -->   
+    
+   
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<link href="css/lightbox.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Poppins:400,600,700,500,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,400italic,500,500italic,300,100italic,100,300italic' rel='stylesheet' type='text/css'>
+        
+<!--calendario -->
+<script language='Javascript'> 
+// construindo o calendário
+function popdate(obj,div,tam,ddd)
+{
+    if (ddd) 
+    {
+        day = ""
+        mmonth = ""
+        ano = ""
+        c = 1
+        char = ""
+        for (s=0;s<parseInt(ddd.length);s++)
+        {
+            char = ddd.substr(s,1)
+            if (char == "/") 
+            {
+                c++; 
+                s++; 
+                char = ddd.substr(s,1);
+            }
+            if (c==1) day    += char
+            if (c==2) mmonth += char
+            if (c==3) ano    += char
+        }
+        ddd = mmonth + "/" + day + "/" + ano
+    }
+  
+    if(!ddd) {today = new Date()} else {today = new Date(ddd)}
+    date_Form = eval (obj)
+    if (date_Form.value == "") { date_Form = new Date()} else {date_Form = new Date(date_Form.value)}
+  
+    ano = today.getFullYear();
+    mmonth = today.getMonth ();
+    day = today.toString ().substr (8,2)
+  
+    umonth = new Array ("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro")
+    days_Feb = (!(ano % 4) ? 29 : 28)
+    days = new Array (31, days_Feb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+ 
+    if ((mmonth < 0) || (mmonth > 11))  alert(mmonth)
+    if ((mmonth - 1) == -1) {month_prior = 11; year_prior = ano - 1} else {month_prior = mmonth - 1; year_prior = ano}
+    if ((mmonth + 1) == 12) {month_next  = 0;  year_next  = ano + 1} else {month_next  = mmonth + 1; year_next  = ano}
+    txt  = "<table bgcolor='#616161' style='border:solid #5c5c5c; border-width:2' cellspacing='0' cellpadding='3' border='0' width='"+tam+"' height='"+tam*1.1 +"'>"
+    txt += "<tr bgcolor='#8e0000'><td colspan='7' align='center'><table border='0' cellpadding='0' width='100%' bgcolor='#e2cc00'><tr>"
+    txt += "<td width=20% align=center><a href=javascript:popdate('"+obj+"','"+div+"','"+tam+"','"+((mmonth+1).toString() +"/01/"+(ano-1).toString())+"') class='Cabecalho_Calendario' title='Ano Anterior'><<</a></td>"
+    txt += "<td width=20% align=center><a href=javascript:popdate('"+obj+"','"+div+"','"+tam+"','"+( "01/" + (month_prior+1).toString() + "/" + year_prior.toString())+"') class='Cabecalho_Calendario' title='Mês Anterior'><</a></td>"
+    txt += "<td width=20% align=center><a href=javascript:popdate('"+obj+"','"+div+"','"+tam+"','"+( "01/" + (month_next+1).toString()  + "/" + year_next.toString())+"') class='Cabecalho_Calendario' title='Próximo Mês'>></a></td>"
+    txt += "<td width=20% align=center><a href=javascript:popdate('"+obj+"','"+div+"','"+tam+"','"+((mmonth+1).toString() +"/01/"+(ano+1).toString())+"') class='Cabecalho_Calendario' title='Próximo Ano'>>></a></td>"
+    txt += "<td width=20% align=right><a href=javascript:force_close('"+div+"') class='Cabecalho_Calendario' title='Fechar Calendário'><b>X</b></a></td></tr></table></td></tr>"
+    txt += "<tr><td colspan='7' align='right' bgcolor='a50101' class='mes'><a href=javascript:pop_year('"+obj+"','"+div+"','"+tam+"','" + (mmonth+1) + "') class='mes'>" + ano.toString() + "</a>"
+    txt += " <a href=javascript:pop_month('"+obj+"','"+div+"','"+tam+"','" + ano + "') class='mes'>" + umonth[mmonth] + "</a> <div id='popd' style='position:absolute'></div></td></tr>"
+    txt += "<tr bgcolor='#eaeaea'><td width='14%' class='dia' align=center><b>Dom</b></td><td width='14%' class='dia' align=center><b>Seg</b></td><td width='14%' class='dia' align=center><b>Ter</b></td><td width='14%' class='dia' align=center><b>Qua</b></td><td width='14%' class='dia' align=center><b>Qui</b></td><td width='14%' class='dia' align=center><b>Sex<b></td><td width='14%' class='dia' align=center><b>Sab</b></td></tr>"
+    today1 = new Date((mmonth+1).toString() +"/01/"+ano.toString());
+    diainicio = today1.getDay () + 1;
+    week = d = 1
+    start = false;
+ 
+    for (n=1;n<= 42;n++) 
+    {
+        if (week == 1)  txt += "<tr bgcolor='#a50101' align=center>"
+        if (week==diainicio) {start = true}
+        if (d > days[mmonth]) {start=false}
+        if (start) 
+        {
+            dat = new Date((mmonth+1).toString() + "/" + d + "/" + ano.toString())
+            day_dat   = dat.toString().substr(0,10)
+            day_today  = date_Form.toString().substr(0,10)
+            year_dat  = dat.getFullYear ()
+            year_today = date_Form.getFullYear ()
+            colorcell = ((day_dat == day_today) && (year_dat == year_today) ? " bgcolor='#144c14' " : "" )
+            txt += "<td"+colorcell+" align=center><a href=javascript:block('"+  d + "/" + (mmonth+1).toString() + "/" + ano.toString() +"','"+ obj +"','" + div +"') class='data'>"+ d.toString() + "</a></td>"
+            d ++ 
+        } 
+        else 
+        { 
+            txt += "<td class='data' align=center> </td>"
+        }
+        week ++
+        if (week == 8) 
+        { 
+            week = 1; txt += "</tr>"} 
+        }
+        txt += "</table>"
+        div2 = eval (div)
+        div2.innerHTML = txt 
+}
+  
+// função para exibir a janela com os meses
+function pop_month(obj, div, tam, ano)
+{
+  txt  = "<table bgcolor='#e2cc00' border='0' width=80>"
+  for (n = 0; n < 12; n++) { txt += "<tr><td align=center><a href=javascript:popdate('"+obj+"','"+div+"','"+tam+"','"+("01/" + (n+1).toString() + "/" + ano.toString())+"')>" + umonth[n] +"</a></td></tr>" }
+  txt += "</table>"
+  popd.innerHTML = txt
+}
+ 
+// função para exibir a janela com os anos
+function pop_year(obj, div, tam, umonth)
+{
+  txt  = "<table bgcolor='#e2cc00' border='0' width=160>"
+  l = 1
+  for (n=1991; n<2012; n++)
+  {  if (l == 1) txt += "<tr>"
+     txt += "<td align=center><a href=javascript:popdate('"+obj+"','"+div+"','"+tam+"','"+(umonth.toString () +"/01/" + n) +"')>" + n + "</a></td>"
+     l++
+     if (l == 4) 
+        {txt += "</tr>"; l = 1 } 
+  }
+  txt += "</tr></table>"
+  popd.innerHTML = txt 
+}
+ 
+// função para fechar o calendário
+function force_close(div) 
+    { div2 = eval (div); div2.innerHTML = ''}
+    
+// função para fechar o calendário e setar a data no campo de data associado
+function block(data, obj, div)
+{ 
+    force_close (div)
+    obj2 = eval(obj)
+    obj2.value = data 
+} 
+//end calendario
+</script>
+<!-- end calendario -->
+
+<!-- toggle ajuda-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+$("#ajuda").hide();
+    $("#help").click(function(){
+        $("#ajuda").slideToggle();
+    });
+});
+</script>
+<!-- end toggle -->
+
+
+
+
+
+
+            
+            
+</head>
+<body onload="onInit()">
+<header class="header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 ">
+				<div class="navbar-header">
+					    <button type="button" class="navbar-toggle menu-button" data-toggle="collapse" data-target="#myNavbar">
+					        <span class="glyphicon glyphicon-align-justify"></span>
+					    </button>
+      			       <div class="navbar-brand logo">Hair&nbsp;Stylist</div> 
+                               
+                               
+                                
+                            
+                                
+    			</div>
+			</div>
+			<div class="col-md-8">
+				<nav class="collapse navbar-collapse" id="myNavbar" role="navigation">
+					<ul class="nav navbar-nav navbar-right menu">
+							
+                                                      <li><a href="#" id="help" class="page-scroll">ajuda</a></li> 
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+
+
+<div class="container-fluid features" id="section2">
+	<div class="container">
+		<div class="row">
+                    <div class="col-md-12"><br><br>
+				<h2 class="text-center portfolio-text">AGENDA</h2>
+                                
+                                <div id="ajuda"><p>1- Esta é uma agenda diária portanto todos os dias você deve criar uma nova agenda do dia:
+                                      Preencha a data e o dia e clique em Novo Dia na parte superior.<br> Obs: data e dia são
+                                      obrigatórios para criar um novo dia. As informações serão armazenadas na parte superior
+                                       da página embaixo da palavra DADOS:.<br> <br>
+                2- Para inserir ou atualizar informações "após" criado um novo dia :<br>
+                Clique em cima da data para que a data vá para o boxe, não é possível manipular informções sem as datas no
+                boxe , e assim informações voltarão para os boxes, após, vá ao campo que deseja
+                faça as alterações OU apague o campo que desejar, e depois clique em salvar.<br><br>
+                3- OBS: botão DELETAR é para deletar uma diária inteira não campos:<br>
+                Caso quiser deletar um dia inteiro clique na data, após as informações  para os boxes, clique em deletar.<br> <br>             
+            
+                * Dica: Após seus serviços serem pago procure deletar os serviços, o armazenamento vai ocupando memória,
+             após alguns milhares de registros poderá pesar na performance do seu hardware, caso seja importante pra você armazenar
+             por tempo indefinido as informações para preservar o histórico dos serviços
+             que você prestou você deve obter um servidor. <br>  <br>         
+           
+              *  Faça bom uso do aplicativo caso deseje inserir novas funcionalidades, obter um servidor para
+                 assegurar ainda mais as suas informações, ou fazer um aplicativo específico para sua empresa
+                 contrate nossos serviços.<br><br></p></div> 
+                                
+			<div class="contact-form">
+                            
+                            
+                            
+     <input type="button" name="create" value="Novo Dia"  onclick="onCreate()" />
+     <input type="button" name="delete" value="Deletar" onclick="onDelete()" />
+   
+                            <br> <br>
+     <div id="dados"> 
+        <span><label><h3> Dados : </h3></label></span> 
+        <span><label><ul id="itemData" style="cursor:pointer;"></ul></label></span>    
+    </div> 
+            <br><br>                        
+                            
+                    <!--tabela1-->     
+<div class="container">                                                                                       
+  <div class="table-responsive"> 
+  <table class="table" id="tblEditavel"> 
+     <tr>
+        <td colspan="3" id="t03">            
+           
+<form name="itemForm">
+                   <div>
+                       <label>DATA :</label> 
+                        <!-- data 1 -->
+                       <input name="data" id="data" SIZE="10" MAXLENGTH="10" value=""   class="form-efeito" required="" /> 
+                       <input TYPE="button" NAME="btnData1" VALUE="..."    Onclick="javascript:popdate('document.itemForm.data','pop1','150',document.itemForm.data.value)"> 
+                       <!--calendario--> 
+                       <span id="pop1" style="position:absolute"></span>
+                    
+                        <!--endcalendario-->         
+                  </div>
+        </td>
+        <td colspan="5" id="t04" title="nome" class="editavel" style="text-transform:uppercase;"><label>DIA DA SEMANA : <input type="text" name="dia" id="dia"  class="form-efeito" required=""  /></label>&nbsp;&nbsp;&nbsp;
+            <button type="button"  onclick="diaSeg()" class="semana">Seg</button>
+            <button type="button"  onclick="diaTer()" class="semana">Ter</button>
+            <button type="button"  onclick="diaQua()" class="semana">Qua</button>
+            <button type="button"  onclick="diaQui()" class="semana">Qui</button>
+            <button type="button"  onclick="diaSex()" class="semana">Sex</button>
+            <button type="button"  onclick="diaSab()" class="semana">Sab</button>
+            <button type="button"  onclick="diaDom()" class="semana">Dom</button>
+            
+          
+        
+        
+        </td>
+     </tr>     
+     <tr>
+        <th id="t02"></th>
+        <th id="t02"></th>  
+        <th colspan="3" id="t02">CABELEIREIROS</th>
+        <th colspan="3" id="t02">MANICURES</th>
+     </tr>
+        <tr>  
+              <th  width="4%">Id</th>
+              <th  width="3%" >HORÁRIO</th>
+              <th width="15%">AMANDA</th>
+              <th width="15%">LUIZ</th>
+              <th width="15%">ARIEL</th>
+              <th width="15%">JOICE</th>
+              <th width="15%">ADRI</th>
+              <th width="15%">BIA</th>
+        </tr>
+    <tbody>
+      <tr>
+        <td><input type="text" name="id" id="id" required="" disabled="true"  placeholder="#"  class="form-control form-effect"/></td>
+        <td><input type="time" name="hora1"   id="hora1"  class="form-effect"  value="08:00" required=""/></td>
+        <td><input type="text" name="amanda1" id="amanda1" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz1"   id="luiz1"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel1"  id="ariel1"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice1"  id="joice1"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri1"   id="adri1"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia1"    id="bia1"    required=""   class="form-control form-effect"/> </td>
+      </tr>
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora2"   id="hora2"  class="form-effect"  value="08:30" required=""/></td>
+        <td><input type="text" name="amanda2" id="amanda2" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz2"   id="luiz2"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel2"  id="ariel2"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice2"  id="joice2"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri2"   id="adri2"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia2"    id="bia2"    required=""   class="form-control form-effect"/> </td>
+      </tr>  
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora3"   id="hora3"  class="form-effect"  value="09:00" required=""/></td>
+        <td><input type="text" name="amanda3" id="amanda3" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz3"   id="luiz3"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel3"  id="ariel3"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice3"  id="joice3"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri3"   id="adri3"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia3"    id="bia3"    required=""   class="form-control form-effect"/> </td>
+      </tr> 
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora4"   id="hora4"  class="form-effect"  value="09:30" required=""/></td>
+        <td><input type="text" name="amanda4" id="amanda4" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz4"   id="luiz4"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel4"  id="ariel4"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice4"  id="joice4"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri4"   id="adri4"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia4"    id="bia4"    required=""   class="form-control form-effect"/> </td>
+      </tr>
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora5"   id="hora5"  class="form-effect"  value="10:00" required=""/></td>
+        <td><input type="text" name="amanda5" id="amanda5" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz5"   id="luiz5"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel5"  id="ariel5"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice5"  id="joice5"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri5"   id="adri5"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia5"    id="bia5"    required=""   class="form-control form-effect"/> </td>
+      </tr>
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora6"   id="hora6"  class="form-effect"  value="10:30" required=""/></td>
+        <td><input type="text" name="amanda6" id="amanda6" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz6"   id="luiz6"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel6"  id="ariel6"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice6"  id="joice6"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri6"   id="adri6"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia6"    id="bia6"    required=""   class="form-control form-effect"/> </td>
+      </tr> 
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora7"   id="hora7"  class="form-effect"  value="11:00" required=""/></td>
+        <td><input type="text" name="amanda7" id="amanda7" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz7"   id="luiz7"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel7"  id="ariel7"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice7"  id="joice7"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri7"   id="adri7"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia7"    id="bia7"    required=""   class="form-control form-effect"/> </td>
+      </tr> 
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora8"   id="hora8"  class="form-effect"  value="11:30" required=""/></td>
+        <td><input type="text" name="amanda8" id="amanda8" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz8"   id="luiz8"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel8"  id="ariel8"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice8"  id="joice8"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri8"   id="adri8"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia8"    id="bia8"    required=""   class="form-control form-effect"/> </td>
+      </tr> 
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora9"   id="hora9"  class="form-effect"  value="12:00" required=""/></td>
+        <td><input type="text" name="amanda9" id="amanda9" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz9"   id="luiz9"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel9"  id="ariel9"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice9"  id="joice9"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri9"   id="adri9"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia9"    id="bia9"    required=""   class="form-control form-effect"/> </td>
+      </tr>
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora10"   id="hora10"  class="form-effect"  value="12:30" required=""/></td>
+        <td><input type="text" name="amanda10" id="amanda10" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz10"   id="luiz10"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel10"  id="ariel10"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice10"  id="joice10"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri10"   id="adri10"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia10"    id="bia10"    required=""   class="form-control form-effect"/> </td>
+      </tr>
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora11"   id="hora11"  class="form-effect"  value="13:00" required=""/></td>
+        <td><input type="text" name="amanda11" id="amanda11" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz11"   id="luiz11"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel11"  id="ariel11"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice11"  id="joice11"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri11"   id="adri11"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia11"    id="bia11"    required=""   class="form-control form-effect"/> </td>
+      </tr>
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora12"   id="hora12"  class="form-effect"  value="13:30" required=""/></td>
+        <td><input type="text" name="amanda12" id="amanda12" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz12"   id="luiz12"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel12"  id="ariel12"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice12"  id="joice12"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri12"   id="adri12"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia12"    id="bia12"    required=""   class="form-control form-effect"/> </td>
+      </tr> 
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora13"   id="hora13"  class="form-effect"  value="13:30" required=""/></td>
+        <td><input type="text" name="amanda13" id="amanda13" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz13"   id="luiz13"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel13"  id="ariel13"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice13"  id="joice13"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri13"   id="adri13"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia13"    id="bia13"    required=""   class="form-control form-effect"/> </td>
+      </tr> 
+       <tr>
+        <td>#</td>
+        <td><input type="time" name="hora14"   id="hora14"  class="form-effect"  value="14:00" required=""/></td>
+        <td><input type="text" name="amanda14" id="amanda14" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz14"   id="luiz14"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel14"  id="ariel14"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice14"  id="joice14"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri14"   id="adri14"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia14"    id="bia14"    required=""   class="form-control form-effect"/> </td>
+      </tr> 
+       <tr>
+        <td>#</td>
+        <td><input type="time" name="hora15"   id="hora15"  class="form-effect"  value="14:30" required=""/></td>
+        <td><input type="text" name="amanda15" id="amanda15" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz15"   id="luiz15"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel15"  id="ariel15"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice15"  id="joice15"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri15"   id="adri15"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia15"    id="bia15"    required=""   class="form-control form-effect"/> </td>
+      </tr>
+       <tr>
+        <td>#</td>
+        <td><input type="time" name="hora16"   id="hora16"  class="form-effect"  value="15:00" required=""/></td>
+        <td><input type="text" name="amanda16" id="amanda16" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz16"   id="luiz16"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel16"  id="ariel16"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice16"  id="joice16"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri16"   id="adri16"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia16"    id="bia16"    required=""   class="form-control form-effect"/> </td>
+      </tr> 
+       <tr>
+        <td>#</td>
+        <td><input type="time" name="hora17"   id="hora17"  class="form-effect"  value="15:30" required=""/></td>
+        <td><input type="text" name="amanda17" id="amanda17" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz17"   id="luiz17"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel17"  id="ariel17"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice17"  id="joice17"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri17"   id="adri17"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia17"    id="bia17"    required=""   class="form-control form-effect"/> </td>
+      </tr>
+       <tr>
+        <td>#</td>
+        <td><input type="time" name="hora18"   id="hora18"  class="form-effect"  value="16:00" required=""/></td>
+        <td><input type="text" name="amanda18" id="amanda18" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz18"   id="luiz18"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel18"  id="ariel18"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice18"  id="joice18"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri18"   id="adri18"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia18"    id="bia18"    required=""   class="form-control form-effect"/> </td>
+      </tr>
+       <tr>
+        <td>#</td>
+        <td><input type="time" name="hora19"   id="hora19"  class="form-effect"  value="16:30" required=""/></td>
+        <td><input type="text" name="amanda19" id="amanda19" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz19"   id="luiz19"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel19"  id="ariel19"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice19"  id="joice19"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri19"   id="adri19"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia19"    id="bia19"    required=""   class="form-control form-effect"/> </td>
+      </tr> 
+       <tr>
+        <td>#</td>
+        <td><input type="time" name="hora20"   id="hora20"  class="form-effect"  value="17:00" required=""/></td>
+        <td><input type="text" name="amanda20" id="amanda20" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz20"   id="luiz20"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel20"  id="ariel20"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice20"  id="joice20"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri20"   id="adri20"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia20"    id="bia20"    required=""   class="form-control form-effect"/> </td>
+      </tr>
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora21"   id="hora21"  class="form-effect"  value="17:30" required=""/></td>
+        <td><input type="text" name="amanda21" id="amanda21" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz21"   id="luiz21"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel21"  id="ariel21"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice21"  id="joice21"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri21"   id="adri21"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia21"    id="bia21"    required=""   class="form-control form-effect"/> </td>
+      </tr> 
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora22"   id="hora22"  class="form-effect"  value="18:00" required=""/></td>
+        <td><input type="text" name="amanda22" id="amanda22" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz22"   id="luiz22"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel22"  id="ariel22"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice22"  id="joice22"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri22"   id="adri22"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia22"    id="bia22"    required=""   class="form-control form-effect"/> </td>
+      </tr>
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora23"   id="hora23"  class="form-effect"  value="18:30" required=""/></td>
+        <td><input type="text" name="amanda23" id="amanda23" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz23"   id="luiz23"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel23"  id="ariel23"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice23"  id="joice23"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri23"   id="adri23"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia23"    id="bia23"    required=""   class="form-control form-effect"/> </td>
+      </tr> 
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora24"   id="hora24"  class="form-effect"  value="19:00" required=""/></td>
+        <td><input type="text" name="amanda24" id="amanda24" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz24"   id="luiz24"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel24"  id="ariel24"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice24"  id="joice24"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri24"   id="adri24"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia24"    id="bia24"    required=""   class="form-control form-effect"/> </td>
+      </tr> 
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora25"   id="hora25"  class="form-effect"  value="19:30" required=""/></td>
+        <td><input type="text" name="amanda25" id="amanda25" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz25"   id="luiz25"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel25"  id="ariel25"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice25"  id="joice25"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri25"   id="adri25"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia25"    id="bia25"    required=""   class="form-control form-effect"/> </td>
+      </tr> 
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora26"   id="hora26"  class="form-effect"  value="20:00" required=""/></td>
+        <td><input type="text" name="amanda26" id="amanda26" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz26"   id="luiz26"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel26"  id="ariel26"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice26"  id="joice26"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri26"   id="adri26"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia26"    id="bia26"    required=""   class="form-control form-effect"/> </td>
+      </tr>
+      <tr>
+        <td>#</td>
+        <td><input type="time" name="hora27"   id="hora27"  class="form-effect"  value="20:30" required=""/></td>
+        <td><input type="text" name="amanda27" id="amanda27" required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="luiz27"   id="luiz27"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="ariel27"  id="ariel27"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="joice27"  id="joice27"  required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="adri27"   id="adri27"   required=""   class="form-control form-effect"/></td>
+        <td><input type="text" name="bia27"    id="bia27"    required=""   class="form-control form-effect"/> </td>
+      </tr> 
+      
+        
+        </tbody>
+
+      </table>
+      </div>
+    </div> 
+     <!-- end tabela1--> 
+      <br>
+                   
+		<input type="button" name="update" value="Salvar" onclick="onUpdate()" />
+		
+ </form>
+	  <h4>Status:</h4>
+      <div id="status"></div>
+        
+                        </div>
+                                
+                                
+                                
+                                
+			
+			</div>
+		</div>
+	</div>
+</div>
+
+	
+    
+<div class="container-fluid footer">
+	<div class="row">            
+		<div class="col-md-12">
+			 <p> Copyright&copy;2016 | Todos os direitos reservados | Powered by apply7 | (47) 9720 6015</p>
+		</div>
+	</div>
+</div>
+    
+  
+    
+</body>
+</html>

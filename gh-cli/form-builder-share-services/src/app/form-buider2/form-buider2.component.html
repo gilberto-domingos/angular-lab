@@ -1,0 +1,61 @@
+<H4>Form 2</H4>
+
+<form [formGroup]="angForm" (submit)="submit()" class="form-reg1">        
+          <mat-form-field>
+              <input matInput  formControlName="firstName" placeholder="Nome :">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput  formControlName="lastName" placeholder="Sobrenome :">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput  formControlName="birthday" placeholder="Data Nasc. :">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput  formControlName="cpf" placeholder="CPF :">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput  formControlName="passport" placeholder="N° passaporte :">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput  formControlName="zipCode" placeholder="Zip Code :">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput  formControlName="address" placeholder="endereço :">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput  formControlName="complement" placeholder="Apt., ste., bldg. :">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput  formControlName="city" placeholder="Cidade :">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput  formControlName="state" placeholder="Estado :">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput  formControlName="fone" placeholder="Celular EUA :">
+        </mat-form-field>
+                 <button type="submit" class="btn-reg1" mat-button>SALVAR</button>
+      </form>  
+
+
+
+
+<!--
+<form [formGroup]="angForm">
+    <input type = "text" 
+          name = "email" 
+          placeholder = "email" 
+          formControlName="email" 
+          #email>
+    <br/>
+    <input type = "password" 
+          name = "pwd" 
+          placeholder = "password" 
+          formControlName="password" 
+          #password>
+    <br/>
+    <input type = "submit" 
+            value = "submit" 
+            (click) = "onClickSubmit(email.value, password.value)" >
+  </form>
+  -->

@@ -1,6 +1,6 @@
 <H4>Form 2</H4>
 
-<form [formGroup]="angForm" (submit)="submit()" class="form-reg1">        
+<form [formGroup]="clientData.rootForm.get('childForm2')" (submit)="submit()" class="form-reg1">        
           <mat-form-field>
               <input matInput  formControlName="firstName" placeholder="Nome :">
           </mat-form-field>

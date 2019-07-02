@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormBuilderDataService } from '../services/form-builder-data.service';
 
@@ -9,31 +8,16 @@ import { FormBuilderDataService } from '../services/form-builder-data.service';
   styleUrls: ['./form-builder.component.scss']
 })
 export class FormBuilderComponent implements OnInit {
-  hide = true;
-  angForm: FormGroup; // angForm will link whith html form
-
+  hide = true;  
  
-  constructor(private router:Router ,private fb: FormBuilder, private formBuilderDataService: FormBuilderDataService ) {
-    this.createForm(new FormBuilderDataService);
-    }
-  
-  createForm(formBuilderDataService: FormBuilderDataService) {
-    this.angForm = this.fb.group({
-    country : [formBuilderDataService.country],
-      email : [formBuilderDataService.email], 
-   password : [formBuilderDataService.password]      
-    });
-  }
-
-  /* onClickSubmit(email, password) {
-   console.log('EMAIL : ', email)
-   
-    console.log("Form Object ", this.angForm.value);
-  } */
+  constructor(private router:Router ,private clientData: FormBuilderDataService) {
+   // console.log(this.clientData)
+   }
+ 
 
   submit(){
-    this.router.navigate(['/form-builder2']);
-  //console.log("Form Object ", this.angForm.value);
+   // this.router.navigate(['/form-builder2']);
+      console.log(this.clientData);
   }
 
    ngOnInit() { 

@@ -1,1 +1,5 @@
-# select-image-file
+# Java Script - select-image-file
+
+------------------------------------------------------------------------------------------------------------------
+
+Praticando Java Script - selecionador de imagens

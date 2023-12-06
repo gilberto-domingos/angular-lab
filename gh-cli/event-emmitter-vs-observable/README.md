@@ -1,28 +1,29 @@
-# EventVsObservable
+# A diferença entre EventEmmitter Vs Observable
+
+Já vi alguns códigos que até usam EventEmitters em serviços. Esta não é uma prática recomendada, o único momento para usar esse objeto é na comunicação entre componentes. Você nunca deve assinar EventEmitters, apenas usá-los exatamente para o caso de uso mostrado na documentação !!! Não encadeie EventEmitters, seu código se tornará uma bagunça.
+
+----------------------------------------------------------------
+RxJS é uma biblioteca de programação reativa para JavaScript. Ela fornece uma série de classes e funções que permitem aos desenvolvedores trabalhar com dados assíncronos de forma mais eficiente e organizada.
+
+No Angular, RxJS é usado para uma variedade de tarefas, incluindo:
+
+Gerenciamento de eventos: RxJS fornece uma maneira de gerenciar eventos de forma assíncrona. Isso pode ser útil para lidar com eventos de entrada do usuário, como cliques ou toques, ou para eventos do DOM, como mudanças de estado.
+Programação assíncrona: RxJS fornece uma maneira de realizar tarefas assíncronas de forma mais eficiente. Isso pode ser útil para lidar com tarefas que levam algum tempo para serem concluídas, como fazer uma solicitação HTTP ou ler dados de um arquivo.
+Observação de dados: RxJS fornece uma maneira de observar dados assíncronos. Isso pode ser útil para acompanhar mudanças de dados ou para reagir a essas mudanças.
+Aqui estão alguns exemplos específicos de como RxJS é usado no Angular:
+
+ - Para gerenciar eventos de entrada do usuário, podemos usar o Observable MouseEvent. Por exemplo, o seguinte código usa RxJS para capturar cliques no botão "Enviar"
+ 
+ - Para realizar uma solicitação HTTP assíncrona, podemos usar o Observable HttpClient. Por exemplo, o seguinte código usa RxJS para fazer uma solicitação HTTP para a API do GitHub
+ 
+ - Para observar dados assíncronos, podemos usar o Observable Subject. Por exemplo, o seguinte código usa RxJS para observar mudanças no valor de uma variável:
+
+
+
+
+
+-------------------------------------------------------------
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.10.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# EventEmmitter-vs-Observable

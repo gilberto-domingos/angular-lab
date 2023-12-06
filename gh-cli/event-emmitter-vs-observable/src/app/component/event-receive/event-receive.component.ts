@@ -7,14 +7,14 @@ import { EventService } from 'src/app/service/event.service';
   styleUrls: ['./event-receive.component.scss']
 })
 export class EventReceiveComponent {
-  
-
-  message:string = '';
+  @Input() title: string = 'novo titulo';
 
   constructor(private eventService: EventService) {}
 
   ngOnInit() {
-    this.eventService.currentMessage.subscribe(message => this.message = message)
-    console.log("Recebendo a varivel : ", this.message)
+    this.eventService.titleEvent.subscribe((title: string) => {
+      this.title = title;
+    });
   }
+
 }

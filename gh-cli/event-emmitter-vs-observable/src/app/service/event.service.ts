@@ -1,19 +1,15 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
   
-  private messageSource = new BehaviorSubject<string>("default message");
-  currentMessage = this.messageSource.asObservable();
+  titleEvent: EventEmitter<string> = new EventEmitter();
 
-  constructor(){ }
-
-  changeMessage(message:string){
-    this.messageSource.next(message);
+  emitTitleEvent(title: string) {
+    this.titleEvent.next(title);
+    console.log("SERVICE a variavel : ", title );
   }
-
 
 }

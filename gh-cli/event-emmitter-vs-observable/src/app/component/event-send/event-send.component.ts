@@ -9,21 +9,14 @@ import { EventService } from 'src/app/service/event.service';
 export class EventSendComponent {
   title: string = '';
 
-  message:string = '';
-
-  constructor(private eventService:EventService) {}
+  constructor(private eventService: EventService) {}
 
   ngOnInit() {
-    this.eventService.currentMessage.subscribe(message => this.message = message)
-  }
-
-  newMessage(){
-    this.eventService.changeMessage("NOVA MENSAGEM");
-    console.log("IMPRIMINDO : ", this.message)
   }
 
   onSubmit() {
-    
+    this.eventService.emitTitleEvent(this.title);
+    console.log("Enviando : ", this.title )
   }
 
 }

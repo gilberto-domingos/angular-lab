@@ -4,14 +4,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { EventSendComponent } from './component/event-send/event-send.component';
 import { EventReceiveComponent } from './component/event-receive/event-receive.component';
 import { ObserveSendComponent } from './component/observe-send/observe-send.component';
+import { AppComponent } from './app.component';
+import { SiblingComponent } from './component/sibling/sibling.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'event-send' },
+  { path: '', pathMatch: 'full', redirectTo: 'sibling' },
 
   { path: 'event-send', component: EventSendComponent },
   { path: 'event-receive', component: EventReceiveComponent },
   { path: 'observe-send', component: ObserveSendComponent },
   { path: 'observe-receive', component: ObserveReceiveComponent },
+  { path: 'sibling', component: SiblingComponent },
     
 
 ];

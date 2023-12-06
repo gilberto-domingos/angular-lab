@@ -10,6 +10,8 @@ import { ObserveSendComponent } from './component/observe-send/observe-send.comp
 import { ObserveReceiveComponent } from './component/observe-receive/observe-receive.component';
 import { EventService } from './service/event.service';
 import { ObservableService } from './service/observable.service';
+import { SiblingComponent } from './component/sibling/sibling.component';
+import { MenuComponent } from './component/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ObservableService } from './service/observable.service';
     EventSendComponent,
     EventReceiveComponent,
     ObserveSendComponent,
-    ObserveReceiveComponent
+    ObserveReceiveComponent,
+    SiblingComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

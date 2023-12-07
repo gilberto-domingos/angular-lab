@@ -22,4 +22,12 @@ export class MenuComponent {
     this.router.navigate(['/sibling']);
   }  
 
+  output(){    
+    this.router.navigate(['/output']);
+  } 
+
+  binding(){    
+    this.router.navigate(['/binding']);
+  } 
+
 }

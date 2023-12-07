@@ -12,6 +12,8 @@ import { EventService } from './service/event.service';
 import { ObservableService } from './service/observable.service';
 import { SiblingComponent } from './component/sibling/sibling.component';
 import { MenuComponent } from './component/menu/menu.component';
+import { BindingPropertyComponent } from './component/binding-property/binding-property.component';
+import { OutputPropertyComponent } from './component/output-property/output-property.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { MenuComponent } from './component/menu/menu.component';
     ObserveSendComponent,
     ObserveReceiveComponent,
     SiblingComponent,
-    MenuComponent
+    MenuComponent,
+    BindingPropertyComponent,
+    OutputPropertyComponent
   ],
   imports: [
     BrowserModule,

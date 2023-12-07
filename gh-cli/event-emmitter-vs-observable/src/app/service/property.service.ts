@@ -1,13 +1,13 @@
+// property.service.ts
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PropertyService {
-
   private novoValorSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  novoValor$: Observable<number> = this.novoValorSubject.asObservable();
+  novoValor$ = this.novoValorSubject.asObservable();
 
   getNovoValor(): number {
     return this.novoValorSubject.getValue();
@@ -16,6 +16,4 @@ export class PropertyService {
   setNovoValor(valor: number): void {
     this.novoValorSubject.next(valor);
   }
-
-  
 }

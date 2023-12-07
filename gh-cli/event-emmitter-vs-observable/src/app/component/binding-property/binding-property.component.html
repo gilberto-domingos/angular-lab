@@ -1,19 +1,4 @@
-<section class="input-output-properties">
-
-  <!-- binding-property.component.html -->
-<h1>Valor em BindingPropertyComponent: {{ valorInicial }}</h1>
-
-<h1>Valor em BindingPropertyComponent: {{ novoValor }}</h1>
-<app-output-property [novoValor]="novoValor" (novoValorChange)="novoValor = $event"></app-output-property>
-
-    <article>
-      <h3>Input/Output Properties</h3>
-  
-     
-  
-     <!-- <app-output-property [valor]="valorInicial" (mudouValor)="onMudouValor($event)"></app-output-property>-->
+<h1>Valor no Binding Component: {{ valorInicial }}</h1>
 
 
-  
-    </article>
-  </section>
+<app-output-property [valor]="valorInicial" (mudouValor)="onMudouValor($event)"></app-output-property>

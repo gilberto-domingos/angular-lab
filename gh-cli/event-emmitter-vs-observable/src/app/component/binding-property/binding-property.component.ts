@@ -8,27 +8,16 @@ import { OutputPropertyComponent } from '../output-property/output-property.comp
   styleUrls: ['./binding-property.component.scss']
 })
 export class BindingPropertyComponent implements AfterViewInit {
- 
   @ViewChild(OutputPropertyComponent, { static: false }) outputComponent!: OutputPropertyComponent;
   
   valorInicial: number = 0; 
-  
-   valorAtual: string = '';
+  valorAtual: string = '';
+  novoValor: number = 0;
 
-   novoValor: number = 0;
-
-   constructor(private propertyService: PropertyService){ 
+  constructor(private propertyService: PropertyService) { 
     this.valorInicial = this.propertyService.getNovoValor();
-   }
-
-   incrementa() {
-    this.novoValor++;
   }
-
-  decrementa() {
-    this.novoValor--;
-  }
-
+  
   onKeyUp(evento: KeyboardEvent){
     this.valorAtual = (<HTMLInputElement>evento.target).value;
   }
@@ -41,13 +30,11 @@ export class BindingPropertyComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     if (this.outputComponent) {
-      // Se o componente de saída foi carregado
-      this.valorInicial = this.outputComponent.valor; // Define valorInicial com o valor do componente de saída
+      this.valorInicial = this.outputComponent.valor;
     }
   }
 
   ngOnInit() {
    
   }
-
 }

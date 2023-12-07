@@ -1,10 +1,8 @@
-<br><br><br><br>
+<br><br><br><br> 
 <div>
-    <button class="btn btn-primary" (click)="decrementa()">-</button>
-    <input type="text" [value]="valor" readonly #campoInput>
-    <button class="btn btn-primary" (click)="incrementa()">+</button>
-  </div>
+  <button class="btn btn-primary" (click)="decrementa()">-</button>
+  <input type="text" [value]="valorInicial" readonly #campoInput>
+  <button class="btn btn-primary" (click)="incrementa()">+</button>
+</div>
 
- 
-<h1>Valor no OutputPropertyComponent: {{ novoValor }}</h1>
-
+<h1>Valor no OutputPropertyComponent: {{ valorInicial }}</h1>

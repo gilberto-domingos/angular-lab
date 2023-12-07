@@ -14,6 +14,7 @@ import { SiblingComponent } from './component/sibling/sibling.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { BindingPropertyComponent } from './component/binding-property/binding-property.component';
 import { OutputPropertyComponent } from './component/output-property/output-property.component';
+import { PropertyService } from './service/property.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { OutputPropertyComponent } from './component/output-property/output-prop
     AppRoutingModule,
     FormsModule
   ],
-  providers: [EventService, ObservableService],
+  providers: [EventService, ObservableService,PropertyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,20 +1,53 @@
-import { Component } from '@angular/core';
+import { PropertyService } from './../../service/property.service';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { OutputPropertyComponent } from '../output-property/output-property.component';
 
 @Component({
   selector: 'app-binding-property',
   templateUrl: './binding-property.component.html',
   styleUrls: ['./binding-property.component.scss']
 })
-export class BindingPropertyComponent {
-  valorInicial:number = 15;
+export class BindingPropertyComponent implements AfterViewInit {
+ 
+  @ViewChild(OutputPropertyComponent, { static: false }) outputComponent!: OutputPropertyComponent;
+  
+  valorInicial: number = 0; 
+  
    valorAtual: string = '';
+
+   novoValor: number = 0;
+
+   constructor(private propertyService: PropertyService){ 
+    this.valorInicial = this.propertyService.getNovoValor();
+   }
+
+   incrementa() {
+    this.novoValor++;
+  }
+
+  decrementa() {
+    this.novoValor--;
+  }
 
   onKeyUp(evento: KeyboardEvent){
     this.valorAtual = (<HTMLInputElement>evento.target).value;
   }
 
   onMudouValor(evento: { novoValor: number; }){
+    this.valorInicial = evento.novoValor;
+    this.propertyService.setNovoValor(this.valorInicial);
     console.log(evento.novoValor);
+  }  
+
+  ngAfterViewInit() {
+    if (this.outputComponent) {
+      // Se o componente de saída foi carregado
+      this.valorInicial = this.outputComponent.valor; // Define valorInicial com o valor do componente de saída
+    }
+  }
+
+  ngOnInit() {
+   
   }
 
 }

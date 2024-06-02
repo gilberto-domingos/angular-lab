@@ -1,36 +1,54 @@
 @keyframes colorChange {
-    0%, 100% {
-        background: linear-gradient(45deg, #ffeb3b, #FF5722FF, #2182cd, #9f03aa,#ff5722);
-        background-size: 100% 200%;
-    }
-    0%, 100% {
-        background: linear-gradient(45deg, #2182cd, #ffeb3b, #9f03aa, #ff5722, #b15cd5);
-        background-size: 120% 200%;
-    }
-    0%, 100% {
-        background: linear-gradient(45deg, #2182cd, #9f03aa, #ffeb3b, #ff5722, #b15cd5);
+
+    0%,
+    100% {
+        background: linear-gradient(45deg, #ffeb3b, #FF5722FF, #2182cd, #9f03aa, #ff5722);
         background-size: 100% 200%;
     }
 
-    14.28%, 85.72% {
-        background: linear-gradient(45deg, #2182cd, #9f03aa,#ff5722, #ffeb3b, #b15cd5);
-        background-size: 120% 200%;
-    }
-
-    28.56%, 71.44% {
-        background: linear-gradient(45deg, #2182cd, #9f03aa, #ffeb3b, #ff5722, #b15cd5);
-        background-size: 100% 200%;
-    }
-
-    42.84%, 57.16% {
+    0%,
+    100% {
         background: linear-gradient(45deg, #2182cd, #ffeb3b, #9f03aa, #ff5722, #b15cd5);
         background-size: 120% 200%;
     }
 
-    57.12%, 42.88% {
-        background: linear-gradient(45deg, #ffeb3b, #2182cd, #9f03aa,   #FF5722FF,#ff5722);
+    0%,
+    100% {
+        background: linear-gradient(45deg, #2182cd, #9f03aa, #ffeb3b, #ff5722, #b15cd5);
         background-size: 100% 200%;
     }
+
+    14.28%,
+    85.72% {
+        background: linear-gradient(45deg, #2182cd, #9f03aa, #ff5722, #ffeb3b, #b15cd5);
+        background-size: 120% 200%;
+    }
+
+    28.56%,
+    71.44% {
+        background: linear-gradient(45deg, #2182cd, #9f03aa, #ffeb3b, #ff5722, #b15cd5);
+        background-size: 100% 200%;
+    }
+
+    42.84%,
+    57.16% {
+        background: linear-gradient(45deg, #2182cd, #ffeb3b, #9f03aa, #ff5722, #b15cd5);
+        background-size: 120% 200%;
+    }
+
+    57.12%,
+    42.88% {
+        background: linear-gradient(45deg, #ffeb3b, #2182cd, #9f03aa, #FF5722FF, #ff5722);
+        background-size: 100% 200%;
+    }
+}
+
+.whats {
+    width: 35px;
+    height: auto;
+    margin: 0 0 2% 95%;
+    position: fixed;
+    bottom: 0;
 }
 
 footer {
@@ -42,12 +60,20 @@ footer {
     bottom: 0;
     width: 100%;
     color: #fff;
-    font-size: 14px;    
-    animation: colorChange 60s infinite;    
+    font-size: 14px;
+    animation: colorChange 60s infinite;
 }
 
 footer p {
     margin-bottom: 0;
 }
 
-
+@media (max-width: 768px) {
+    .whats {
+        width: 35px;
+        height: auto;
+        margin: 0 0 6% 92%;
+        position: fixed;
+        bottom: 0;
+    }
+}

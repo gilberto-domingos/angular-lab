@@ -111,8 +111,8 @@
     color: white;
 }
 
-.click {
-    width: 35px;
+.icons {
+    width: 50px;
     height: auto;
 }
 
@@ -125,6 +125,12 @@
     width: 100%;
     height: auto;
     margin-bottom: 15px;
+}
+
+.iframe {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    background-color: #000000;
 }
 
 .space-bar {
@@ -167,5 +173,11 @@
 @media (max-width: 800px) {
     .flex-container {
         flex-direction: column;
+    }
+
+    .iframe {
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        background-color: #000000;
     }
 }

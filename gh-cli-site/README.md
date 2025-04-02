@@ -1,4 +1,4 @@
-# GhCli
+# GhCli - Experimento de site desenvolvido para hospedagem no Github com dominio com Angular-cli
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.2.
 

@@ -1,4 +1,4 @@
-# JAVVA SCRIPT - Tabela Editavel / Edit table 
+# JAVA SCRIPT - Tabela Editavel / Edit table 
 
 Praticando Java Script 
 

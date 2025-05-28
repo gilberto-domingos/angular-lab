@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import {
   MatDialog,
   MatDialogRef,
@@ -20,14 +21,19 @@ import { CokieDialogComponent } from "../cokie-dialog/cokie-dialog.component";
 export class CokieComponent {
   private readonly cookieKey = 'cookieKey';
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngOnInit(): void {
-    const dialogShown = localStorage.getItem(this.cookieKey);
+    if (isPlatformBrowser(this.platformId)) {
+      const dialogShown = localStorage.getItem(this.cookieKey);
 
-    if (!dialogShown) {
-      this.openDialog('0500ms', '0500ms');
-      localStorage.setItem(this.cookieKey, 'true');
+      if (!dialogShown) {
+        this.openDialog('0500ms', '0500ms');
+        localStorage.setItem(this.cookieKey, 'true');
+      }
     }
   }
 

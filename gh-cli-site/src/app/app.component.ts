@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MenuBarComponent } from './menu-bar/menu-bar.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './Components/footer/footer.component';
+import { MenuBarComponent } from './Components/menu-bar/menu-bar.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, MenuBarComponent, FooterComponent],
+  imports: [RouterOutlet, FooterComponent, MenuBarComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',  
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'b1010code';
+  title = 'gh-cli';
 }

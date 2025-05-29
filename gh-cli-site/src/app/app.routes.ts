@@ -1,11 +1,10 @@
-import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
-import { HomeComponent } from './home/home.component';
-import { MenuBarComponent } from './menu-bar/menu-bar.component';
-import { FooterComponent } from './footer/footer.component';
-import { CarouselComponent } from "./carousel/carousel.component";
-import { CokieDialogComponent} from "./cokie-dialog/cokie-dialog.component";
-import { CokieComponent} from "./cokie/cokie.component";
+import { Routes } from '@angular/router';
+import { HomeComponent } from './Components/home/home.component';
+import { MenuBarComponent } from './Components/menu-bar/menu-bar.component';
+import { CarouselComponent } from './Components/carousel/carousel.component';
+import { FooterComponent } from './Components/footer/footer.component';
+import { CokieDialogComponent } from './Components/cokie-dialog/cokie-dialog.component';
+import { CokieComponent } from './Components/cokie/cokie.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -15,12 +14,4 @@ export const routes: Routes = [
   { path: 'carousel', component: CarouselComponent },
   { path: 'dialog', component: CokieDialogComponent },
   { path: 'cokie', component: CokieComponent },
-
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-
-export class AppRoutes { }

@@ -125,14 +125,17 @@
 
 .card-text {
   padding: 5px 10px 5px 10px !important;
+  margin-bottom: 0;
   text-align: justify;
   text-overflow: ellipsis;
-  white-space: wrap;
-  color: #2a3c68;
+  white-space: normal;
+  color: #040694;
+  background: linear-gradient(to bottom, #ffffff 0%, #dca3df);
 }
 
 .card-text:empty {
   text-align: left;
+  margin-bottom: 0;
 }
 
 .container {
@@ -204,6 +207,28 @@
 .btn-stripe:hover {
   background-color: #2182cd;
   color: white;
+}
+
+.card-body-text {
+  background: linear-gradient(to top, #ffffff 5%, #dca3df);
+}
+
+h2,
+h3,
+p {
+  margin: 0 0 1rem 10px;
+}
+
+.titulo {
+  color: #5e2590;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.texto {
+  color: #5e2590;
+  font-size: 1.4rem;
+  margin-left: 1rem;
 }
 
 .contato {

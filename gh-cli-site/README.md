@@ -1,6 +1,6 @@
-# gh-cli, gh-pages - site estático
+# gh-cli, gh-pages - Estático
 
-#### => https://gilberto-domingos.github.io/gh-cli/home
+#### => https://gilberto-domingos.github.io/gh-cli
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.14.
 

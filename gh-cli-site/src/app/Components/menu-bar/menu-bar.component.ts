@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-menu-bar',
   imports: [],
   templateUrl: './menu-bar.component.html',
-  styleUrl: './menu-bar.component.scss'
+  styleUrl: './menu-bar.component.scss',
 })
-export class MenuBarComponent {
-
-}
+export class MenuBarComponent {}

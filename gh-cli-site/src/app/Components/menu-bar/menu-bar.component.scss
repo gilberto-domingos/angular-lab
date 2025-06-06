@@ -1,7 +1,33 @@
+.navbar {
+  padding-right: 2rem;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .logo {
   width: 150px;
   height: auto;
 }
+
+.navbar-icons {
+  display: flex;
+  gap: 3rem;
+}
+
+.navbar-icons a {
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 1px #000000;
+  transition: color 0.3s ease;
+}
+
+.navbar-icons a:hover {
+  color: #0077b5;
+}
+
 .back-animation {
   animation: gradient-background 60s infinite;
 }

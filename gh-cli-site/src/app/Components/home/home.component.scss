@@ -94,6 +94,11 @@
 }
 
 /* -------------- */
+.fab {
+  color: #4d0190;
+  text-shadow: 1px 1px 1px #000000;
+}
+
 .social-icons-wrapper {
   width: 100%;
   display: flex;
@@ -168,7 +173,7 @@
   text-align: justify;
   text-overflow: ellipsis;
   white-space: normal;
-  color: #040694;
+  color: #4d0190;
   background: linear-gradient(to bottom, #ffffff 0%, #dca3df);
 }
 

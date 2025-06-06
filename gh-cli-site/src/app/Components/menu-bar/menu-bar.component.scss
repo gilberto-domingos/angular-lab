@@ -20,6 +20,7 @@
 
 .navbar-icons a {
   font-size: 1.5rem;
+  color: #0000ee;
   text-shadow: 1px 1px 1px #000000;
   transition: color 0.3s ease;
 }
@@ -33,22 +34,6 @@
 }
 .custom-navbar {
   background-color: transparent !important;
-}
-
-footer {
-  background-color: #f1f4f6;
-  text-shadow: 1px 1px 1px #000000;
-  padding: 2px 0;
-  text-align: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  color: #fff;
-  font-size: 14px;
-}
-
-footer p {
-  margin-bottom: 0;
 }
 
 @keyframes gradient-background {

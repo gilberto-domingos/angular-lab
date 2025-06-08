@@ -1,4 +1,4 @@
-# gh-cli, gh-pages - Estático
+# gh-cli - gh-pages
 
 #### => https://gilberto-domingos.github.io/gh-cli
 

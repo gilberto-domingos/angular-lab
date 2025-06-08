@@ -5,95 +5,110 @@
     <div class="flex-item">
       <img src="assets/azure-services.jpg" alt="banner-1" class="plan" />
       <h4 class="card-text">
-        Serviços automatizados para macro e micro empresas, comércios e
-        escritórios, Backups, segurança de informações, estrutura e mineração de
-        dados.
+        Transferência de sistemas para computação em nuvem eliminando problemas
+        de quedas e acessos. Rede de entrega de conteúdo global com segurança.
       </h4>
     </div>
     <div class="flex-item">
       <img src="assets/banner-2.svg" alt="banner-2" class="plan" />
-      <h4 class="card-text">
-        Transferência de sistemas para computação em nuvem eliminando problemas
-        de quedas e acessos. Rede de entrega de conteúdo global.
-      </h4>
-    </div>
-    <div class="flex-item">
-      <img src="assets/banner-3.svg" alt="banner-3" class="plan" />
       <h4 class="card-text">
         Escalonamento de computação em nuvem larga scala para Big Techs. Com
         armazenamento e recuperação qualquer quantidade de dados de qualquer
         lugar.
       </h4>
     </div>
+    <div class="flex-item">
+      <img src="assets/banner-3.svg" alt="banner-3" class="plan" />
+      <h4 class="card-text">
+        Serviços automatizados para macro e micro empresas, comércios e
+        escritórios, Backups, segurança de informações estrutura e análise de
+        dados.
+      </h4>
+    </div>
   </div>
+  <div class="flex-container"></div>
   <div class="flex-container">
     <div class="flex-item">
-      <div class="card">
-        <div class="toast-header">
-          <div class="card-body">
-            <a
-              class="card-link"
-              href="https://wa.me/5547997517753"
-              target="_blank"
-              class="btn btn-whatsapp"
-              >WhatsApp</a
-            >
-          </div>
-        </div>
-        <div class="card-body">
-          <img class="plan" src="assets/stripe.png" alt="plan" />
-        </div>
-      </div>
+      <img
+        #stripeImage
+        src="assets/stripe.png"
+        alt="clients-1"
+        class="clients"
+      />
     </div>
     <div class="flex-item">
-      <div class="card">
-        <div class="card-body toast-header">
-          <div class="card-body">
-            <a
-              class="card-link"
-              href="https://stripe.com/en-br"
-              target="_blank"
-              class="btn btn-stripe"
-              >by Stripe</a
-            >
-          </div>
+      <div
+        #textContent
+        class="card-body-text"
+        [ngStyle]="{
+          maxHeight: expanded ? 'none' : maxHeight + 'px',
+          overflow: expanded ? 'visible' : 'hidden'
+        }"
+      >
+        <div class="title">
+          <h2 class="title">Aceite e otimize pagamentos globalmente</h2>
         </div>
-        <div class="card-body">
-          <div class="card-body-text">
-            <h2 class="titulo">Aceite e otimize pagamentos globalmente</h2>
-            <p class="texto">
-              Implemente Stripe e aumente as taxas de autorização, otimize a
-              conversão no checkout e ofereça formas de pagamento locais em
-              todos os mercados.
-            </p>
+        <p class="text">
+          Implemente Stripe e aumente as taxas de autorização, otimize a
+          conversão no checkout e ofereça formas de pagamento locais em todos os
+          mercados.
+        </p>
+        <h2 class="title">Obtenha receitas recorrentes</h2>
+        <p class="text">
+          Atenda modelos de negócios recorrentes, minimize a perda de clientes e
+          <br />
+          automatize as operações financeiras.
+        </p>
 
-            <h2 class="titulo">Obtenha receitas recorrentes</h2>
-            <p class="texto">
-              Atenda modelos de negócios recorrentes, minimize a perda de
-              clientes e <br />
-              automatize as operações financeiras.
-            </p>
+        <h2 class="title">
+          Um pacote totalmente integrado de produtos para gestão<br />financeira
+          e pagamentos.
+        </h2>
+        <p class="text">
+          Reduza custos, aumente a receita e administre sua empresa com mais
+          eficiência em uma plataforma totalmente integrada. Para gerenciar
+          todas as suas necessidades de pagamento e operações de receita.
+        </p>
+        <h2 class="title">Agilidade e rapidez</h2>
+        <p class="text">
+          Integre com rapidez a Stripe Billing para gerenciar assinaturas,
+          faturas e cobranças recorrentes com flexibilidade. Personalize ciclos
+          de cobrança, descontos e períodos de avaliação com facilidade.
+        </p>
 
-            <h2 class="titulo">
-              Um pacote totalmente integrado de produtos para gestão<br />financeira
-              e pagamentos.
-            </h2>
-            <p class="texto">
-              Reduza custos, aumente a receita e administre sua empresa com
-              mais<br />
-              eficiência em uma plataforma totalmente integrada. Para gerenciar
-              <br />
-              todas as suas necessidades de pagamento e operações de receita.
-            </p>
-          </div>
-          <!-- -->
-        </div>
+        <h2 class="title">Gerênciamnto de marketplaces</h2>
+        <p class="text">
+          Acesse Stripe Connect para gerenciar marketplaces, plataformas de
+          serviço e contas de terceiros. Automatize repasses, comissões e
+          relatórios financeiros de forma segura e escalável.
+        </p>
+        <h2 class="title">Detectar e prevenir fraudes</h2>
+
+        <p class="text">
+          Utilize Stripe Radar com inteligência artificial para detectar e
+          prevenir fraudes em tempo real. Reduza chargebacks e proteja sua
+          empresa com uma solução antifraude integrada ao fluxo de pagamento.
+        </p>
       </div>
+      <div class="inline">
+        <button class="btn-toggle" (click)="toggleExpand()">
+          {{ expanded ? "Fechar" : "Ler mais..." }}
+        </button>
+        <a href="https://stripe.com/pt-br" class="btn-stripe">
+          <img src="assets/stripe.svg" alt="Logo" />
+        </a>
+        <span class="msg">conheça</span>
+      </div>
+    </div>
+  </div>
+  <div class="toast-header-functs">
+    <div class="flex-item">
+      <h5>.</h5>
     </div>
   </div>
   <div class="flex-container-rainbow">
     <div class="flex-item">
-      <img src="assets/monitorar.svg" class="clients-rainbow" />
+      <img src="assets/sistemas.svg" class="clients-rainbow" />
     </div>
     <div class="flex-item">
       <img src="assets/auto.svg" class="clients-rainbow" />
@@ -108,29 +123,12 @@
       <img src="assets/relat.svg" class="clients-rainbow" />
     </div>
     <div class="flex-item">
-      <img src="assets/sistemas.svg" class="clients-rainbow" />
+      <img src="assets/restaurar.svg" class="clients-rainbow" />
     </div>
   </div>
   <div class="toast-header-functs">
-    <div class="flex-container">
-      <div class="flex-item">
-        <strong>Custom Solutions</strong>
-      </div>
-      <div class="flex-item">
-        <strong>Clean Architecture</strong>
-      </div>
-      <div class="flex-item">
-        <strong>Migrations</strong>
-      </div>
-      <div class="flex-item">
-        <strong>Cloud Computing</strong>
-      </div>
-      <div class="flex-item">
-        <strong>Gateways</strong>
-      </div>
-      <div class="flex-item">
-        <strong>Big Data</strong>
-      </div>
+    <div class="flex-item">
+      <h5>.</h5>
     </div>
   </div>
   <div class="flex-container">
@@ -163,28 +161,5 @@
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
-  </div>
-  <div class="social-icons-container flex-container-icons">
-    <a
-      href="https://www.linkedin.com/in/gilberto-domingos/"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <i class="fab fa-linkedin fa-2x"></i>
-    </a>
-    <a
-      href="https://github.com/gilberto-domingos"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <i class="fab fa-github fa-2x"></i>
-    </a>
-    <a
-      href="https://www.facebook.com/gil.Domingos.jr/?locale=pt_BR"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <i class="fab fa-facebook fa-2x"></i>
-    </a>
   </div>
 </div>

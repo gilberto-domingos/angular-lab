@@ -85,6 +85,13 @@
   flex-direction: row;
 }
 
+.flex-container-rainbow {
+  display: flex;
+  flex-direction: row;
+  animation: colorChange 60s infinite;
+  background-size: 100% 100%;
+}
+
 .flex-item-icon {
   text-align: center;
 }
@@ -173,8 +180,8 @@
   text-align: justify;
   text-overflow: ellipsis;
   white-space: normal;
-  color: #4d0190;
-  background: linear-gradient(to bottom, #ffffff 0%, #dca3df);
+  color: #201c1d;
+  background: linear-gradient(to bottom, #ffffff 0%, #bcc0c3);
 }
 
 .card-text:empty {
@@ -191,7 +198,7 @@
   position: relative;
   display: inline-block;
   padding: 5px 10px;
-  margin: 3px 0px 0px 0px;
+  margin: 3px 0px 0px 5px;
   border-radius: 8px;
   color: white;
   text-shadow: 1px 1px 1px #000000;
@@ -212,8 +219,10 @@
 }
 
 .plan {
+  display: block;
   width: 100%;
   height: auto;
+  line-height: 0;
 }
 
 .icon {
@@ -226,7 +235,15 @@
 .clients {
   width: 100%;
   height: auto;
-  margin-bottom: 15px;
+  margin-bottom: 0;
+  display: block;
+}
+
+.clients-rainbow {
+  width: 70%;
+  height: auto;
+  margin: auto;
+  display: block;
 }
 
 .iframe {
@@ -238,7 +255,7 @@
   position: relative;
   display: inline-block;
   padding: 5px 10px;
-  margin: 3px 0px 0px 0px;
+  margin: 3px 0px 0px 5px;
   border-radius: 8px;
   color: white;
   text-shadow: 1px 1px 1px #000000;
@@ -257,6 +274,20 @@
   background: linear-gradient(to top, #ffffff 5%, #dca3df);
 }
 
+.image-container {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  font-size: 0;
+}
+
+.image-container img {
+  display: block;
+  width: 100%; /* ou ajuste conforme o necessário */
+  height: auto;
+  line-height: 0;
+}
+
 h2,
 h3,
 p {
@@ -264,13 +295,13 @@ p {
 }
 
 .titulo {
-  color: #5e2590;
+  color: #101539;
   font-weight: bold;
   font-size: 1.6rem;
 }
 
 .texto {
-  color: #5e2590;
+  color: #101539;
   font-size: 1.4rem;
   margin-left: 1rem;
 }
@@ -294,9 +325,16 @@ p {
     flex-direction: column;
   }
 
-  .iframe {
-    max-width: 100% !important;
-    margin: 0 auto;
+  .flex-container-rainbow {
+    flex-direction: column;
+    margin: 0 auto !important;
+  }
+
+  .clients-rainbow {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0;
+    display: block;
   }
 
   body {

@@ -38,68 +38,33 @@
     </div>
     <div class="flex-item">
       <div
-        #textContent
-        class="card-body-text"
-        [ngStyle]="{
-          maxHeight: expanded ? 'none' : maxHeight + 'px',
-          overflow: expanded ? 'visible' : 'hidden'
-        }"
+        class="carousel-container"
+        (mouseenter)="stopAutoSlide()"
+        (mouseleave)="startAutoSlide()"
       >
-        <div class="title">
-          <h2 class="title">Aceite e otimize pagamentos globalmente</h2>
+        <div
+          class="carousel-slide"
+          *ngFor="let slide of slides; let i = index"
+          [class.active]="i === currentIndex"
+        >
+          <img [src]="slide.src" [alt]="slide.title" />
         </div>
-        <p class="text">
-          Implemente Stripe e aumente as taxas de autorização, otimize a
-          conversão no checkout e ofereça formas de pagamento locais em todos os
-          mercados.
-        </p>
-        <h2 class="title">Obtenha receitas recorrentes</h2>
-        <p class="text">
-          Atenda modelos de negócios recorrentes, minimize a perda de clientes e
-          <br />
-          automatize as operações financeiras.
-        </p>
 
-        <h2 class="title">
-          Um pacote totalmente integrado de produtos para gestão<br />financeira
-          e pagamentos.
-        </h2>
-        <p class="text">
-          Reduza custos, aumente a receita e administre sua empresa com mais
-          eficiência em uma plataforma totalmente integrada. Para gerenciar
-          todas as suas necessidades de pagamento e operações de receita.
-        </p>
-        <h2 class="title">Agilidade e rapidez</h2>
-        <p class="text">
-          Integre com rapidez a Stripe Billing para gerenciar assinaturas,
-          faturas e cobranças recorrentes com flexibilidade. Personalize ciclos
-          de cobrança, descontos e períodos de avaliação com facilidade.
-        </p>
+        <div class="bottom-center" *ngIf="slides[currentIndex]">
+          <h3 class="luxury-heading">{{ slides[currentIndex].title }}</h3>
+          <p class="luxury-subtitle">{{ slides[currentIndex].subtitle }}</p>
 
-        <h2 class="title">Gerênciamnto de marketplaces</h2>
-        <p class="text">
-          Acesse Stripe Connect para gerenciar marketplaces, plataformas de
-          serviço e contas de terceiros. Automatize repasses, comissões e
-          relatórios financeiros de forma segura e escalável.
-        </p>
-        <h2 class="title">Detectar e prevenir fraudes</h2>
-
-        <p class="text">
-          Utilize Stripe Radar com inteligência artificial para detectar e
-          prevenir fraudes em tempo real. Reduza chargebacks e proteja sua
-          empresa com uma solução antifraude integrada ao fluxo de pagamento.
-        </p>
-      </div>
-      <div class="inline">
-        <button class="btn-toggle" (click)="toggleExpand()">
-          {{ expanded ? "Fechar" : "Ler mais..." }}
-        </button>
-        <a href="https://stripe.com/pt-br" class="btn-stripe">
-          <img src="assets/stripe.svg" alt="Logo" />
-        </a>
-        <span class="msg">conheça</span>
+          <div class="buttons">
+            <button (click)="goToStripe()" class="btn primary">Stripe</button>
+            <button (click)="goToWhatsapp()" class="btn secondary">
+              Whatsapp
+            </button>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!--------------------->
   </div>
   <div class="toast-header-functs">
     <div class="flex-item">
@@ -139,6 +104,7 @@
       <img src="assets/clients-2.png" alt="clients-2" class="clients" />
     </div>
   </div>
+  <div class="shadow-line"></div>
   <div class="card contato">
     <div class="flex-container contato">
       <div class="flex-item contato">

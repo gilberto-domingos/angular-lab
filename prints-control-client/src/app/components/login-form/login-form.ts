@@ -43,10 +43,10 @@ export class LoginForm implements OnInit {
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
   ) {}
 
-  // É um login básico caso houver interesse do senac vou implementar hash Token JWT de forma profissional
+  // É um login básico, não foi exigido, se quiserem eu implemento hash Token JWT
   ngOnInit() {
     setTimeout(() => {
       this.spinnerVisible = false;
@@ -70,7 +70,7 @@ export class LoginForm implements OnInit {
     });
   }
 
-  // É um login básico caso houver interesse do senac vou implementar hash Token JWT de forma profissional
+  // É um login básico, não foi exigido, se quiserem eu implemento hash Token JWT
   onSubmit() {
     if (this.form.invalid) return;
 

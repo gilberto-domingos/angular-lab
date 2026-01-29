@@ -1,5 +1,3 @@
-## Front-end está sendo refatorado nesse momento...
-
 ### Front-end do projeto fullStack Senac
 
 - Projeto Angular
@@ -14,12 +12,11 @@
 - Atualização de dados da transação com HTTP PUT
 - Exclusão de transação com HTTP DELETE
 
-#### o back-end desse projeto está no repositório :
+#### o back-end desse projeto está no repositório, veja o projeto rodando :
 
 https://github.com/gilberto-domingos/Prints-Control
 
 <br/><br/>
-<img src="assets/logo.png" width="200" alt="logo">
 
 #### Tema gerador : Controle de Impressões
 

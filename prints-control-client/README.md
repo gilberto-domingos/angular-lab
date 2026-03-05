@@ -12,10 +12,6 @@
 - Atualização de dados da transação com HTTP PUT
 - Exclusão de transação com HTTP DELETE
 
-#### o back-end desse projeto está no repositório, veja o projeto rodando :
-
-https://github.com/gilberto-domingos/Prints-Control
-
 <br/><br/>
 
 #### Tema gerador : Controle de Impressões

@@ -2,4 +2,4 @@
 
 ------------------------------------------------------------------------------------------------------------------
 
-Praticando Java Script - selecionador de imagens
+Practicing JavaScript - image selector

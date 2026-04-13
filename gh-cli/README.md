@@ -1,5 +1,11 @@
-# Angular-lab
+# Angular
 
-### Laboratory for experiments, study and practice of angular-cli
+### Old projects
 
+- angular-cli-consulta-cep
+- angular-cli-forms-validate
+- angular-multi-forms
+- cli-initializer
+- event-emmitter-vs-observable
+- form-builder-share-services
 - Js edit table

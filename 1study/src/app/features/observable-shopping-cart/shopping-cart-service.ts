@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Buy } from './buy';
 
 @Injectable({
@@ -9,7 +9,7 @@ export class ShoppingCartService {
   private cart: Buy[] = [];
   private productAdded$ = new Subject<number>();
 
-  catchQtdCart() {
+  catchQtdCart(): Observable<number> {
     return this.productAdded$.asObservable();
   }
 

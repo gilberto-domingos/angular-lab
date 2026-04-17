@@ -2,6 +2,8 @@
 
 ### Laboratory for experiments, study and practice of angular-cli
 
+- study <br>
+  => &nbsp;&nbsp; Observable
 - captcha
 - gh-cli-site
 

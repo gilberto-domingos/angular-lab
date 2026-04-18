@@ -21,4 +21,9 @@ export const routes: Routes = [
         (m) => m.ObservableShoppingCart,
       ),
   },
+  {
+    path: 'obs-hot-cold',
+    loadComponent: () =>
+      import('./features/observable-hot-cold/observable-hot-cold').then((m) => m.ObservableHotCold),
+  },
 ];

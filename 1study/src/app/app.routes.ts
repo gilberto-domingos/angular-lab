@@ -22,8 +22,8 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'obs-hot-cold',
+    path: 'obs-cold-vs-hot',
     loadComponent: () =>
-      import('./features/observable-hot-cold/observable-hot-cold').then((m) => m.ObservableHotCold),
+      import('./features/observable-cold-hot/observable-cold-hot').then((m) => m.ObservableColdHot),
   },
 ];

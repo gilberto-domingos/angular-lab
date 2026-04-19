@@ -13,6 +13,6 @@ export class Home {
   items = [
     { title: 'Home', route: '/' },
     { title: 'Observable', route: '/observable' },
-    { title: 'Observable Hot vs Cold', route: '/obs-hot-cold' },
+    { title: 'Observable Cold vs Hot', route: 'obs-cold-vs-hot' },
   ];
 }

@@ -26,4 +26,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/observable-cold-hot/observable-cold-hot').then((m) => m.ObservableColdHot),
   },
+  {
+    path: 'switch-vs-exhaust',
+    loadComponent: () =>
+      import('./features/switch-map-vs-exhaust-map/switch-map-vs-exhaust-map').then(
+        (m) => m.SwitchMapVsExhaustMap,
+      ),
+  },
 ];

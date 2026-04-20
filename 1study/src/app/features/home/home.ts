@@ -14,5 +14,6 @@ export class Home {
     { title: 'Home', route: '/' },
     { title: 'Observable', route: '/observable' },
     { title: 'Observable Cold vs Hot', route: 'obs-cold-vs-hot' },
+    { title: 'Rxjs - Switch Map vs Exhaust Map', route: 'switch-vs-exhaust' },
   ];
 }

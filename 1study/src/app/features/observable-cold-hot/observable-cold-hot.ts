@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
-import { BehaviorSubject, Observable, shareReplay } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 
 export interface Product {
   title: string;
@@ -21,8 +21,6 @@ export class ObservableColdHot {
     console.log('Executed !', aleatoryNumber);
     subscriber.next(aleatoryNumber);
   });
-
-  hot$ = new BehaviorSubject<number>(0);
 
   product$ = this.http.get<Product>('https://dummyjson.com/products/1').pipe(shareReplay());
 

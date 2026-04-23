@@ -33,4 +33,9 @@ export const routes: Routes = [
         (m) => m.SwitchMapVsExhaustMap,
       ),
   },
+  {
+    path: 'health',
+    loadComponent: () =>
+      import('./features/health-check-back/health-check-back').then((m) => m.HealthCheckBack),
+  },
 ];

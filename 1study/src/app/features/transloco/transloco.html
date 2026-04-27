@@ -1,0 +1,10 @@
+<h1>Transloco example</h1>
+
+<ng-container *transloco="let t">
+  <h1>{{ t('transloco.title') }}</h1>
+</ng-container>
+
+<button (click)="setLang('pt')">PT</button>
+<button (click)="setLang('en')">EN</button>
+<button (click)="setLang('es')">Es</button>
+<button (click)="setLang('fr')">Fr</button>

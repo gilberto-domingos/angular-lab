@@ -38,4 +38,8 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/health-check-back/health-check-back').then((m) => m.HealthCheckBack),
   },
+  {
+    path: 'transloco',
+    loadComponent: () => import('./features/transloco/transloco').then((m) => m.Transloco),
+  },
 ];

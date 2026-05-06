@@ -42,4 +42,8 @@ export const routes: Routes = [
     path: 'transloco',
     loadComponent: () => import('./features/transloco/transloco').then((m) => m.Transloco),
   },
+  {
+    path: 'signals',
+    loadComponent: () => import('./features/signals/signals').then((m) => m.Signals),
+  },
 ];

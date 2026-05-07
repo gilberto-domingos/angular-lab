@@ -4,13 +4,22 @@
       <h1>My {{ title() }}</h1>
       <p>My studies on angular-cli</p>
     </div>
+
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
       <div class="pill-group">
         @for (item of items; track item.title) {
-          <a class="pill" [routerLink]="item.route">
-            {{ item.title }}
-          </a>
+          @if (item.route && !item.action) {
+            <a class="pill" [routerLink]="item.route">
+              {{ item.title }}
+            </a>
+          }
+
+          @if (item.action) {
+            <button class="pill" type="button" (click)="item.action()">
+              {{ item.title }}
+            </button>
+          }
         }
       </div>
       <div class="social-links">

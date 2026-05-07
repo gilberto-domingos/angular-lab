@@ -46,4 +46,8 @@ export const routes: Routes = [
     path: 'signals',
     loadComponent: () => import('./features/signals/signals').then((m) => m.Signals),
   },
+  {
+    path: 'dialog',
+    loadComponent: () => import('./features/invest/invest').then((m) => m.Invest),
+  },
 ];

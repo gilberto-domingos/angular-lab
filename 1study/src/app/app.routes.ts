@@ -50,4 +50,9 @@ export const routes: Routes = [
     path: 'dialog',
     loadComponent: () => import('./features/invest/invest').then((m) => m.Invest),
   },
+  {
+    path: 'analytics',
+    loadComponent: () =>
+      import('./features/analytics-access/analytics-access').then((m) => m.AnalyticsAccess),
+  },
 ];
